@@ -1,0 +1,146 @@
+.adlg-root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: inherit;
+  color: var(--text);
+}
+
+.adlg-players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.adlg-player {
+  flex: 1 1 160px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-soft);
+}
+
+.adlg-player.adlg-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.adlg-player-name {
+  font-weight: 600;
+}
+
+.adlg-player-stats {
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+
+.adlg-main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.adlg-me {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--bg-soft);
+}
+
+.adlg-me-stats {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.adlg-missions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.adlg-mission {
+  font-size: 0.9em;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: transparent;
+}
+
+.adlg-mission-done {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.adlg-banner {
+  font-weight: 600;
+  padding: 6px 0;
+}
+
+.adlg-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.adlg-shop {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.adlg-btn {
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--text);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.adlg-btn:hover:not(:disabled) {
+  background: var(--accent);
+  color: var(--bg-soft);
+}
+
+.adlg-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.adlg-btn-primary {
+  background: var(--accent);
+  color: var(--bg-soft);
+}
+
+.adlg-btn-danger {
+  border-color: #b33;
+  color: #b33;
+}
+
+.adlg-btn-danger:hover:not(:disabled) {
+  background: #b33;
+  color: #fff;
+}
+
+.adlg-check {
+  font-size: 0.85em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.adlg-log {
+  border-top: 1px dashed var(--line);
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.adlg-log-line {
+  font-size: 0.8em;
+  opacity: 0.7;
+}
