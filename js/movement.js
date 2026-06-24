@@ -4,10 +4,19 @@
 
 function rollDice(){
   if(!isMyTurn()||hasRolled)return;
-  // Échec de mission en attente : on demande au joueur ce qu'il veut faire ce tour-ci
-  // (voir openRetryChoice ci-dessous) au lieu de relancer automatiquement la mission.
-  if(me()?.failedMission){openRetryChoice();return;}
+  // Échec de mission en attente : on ne propose la retentative (sans se déplacer,
+  // voir openRetryChoice ci-dessous) que si le joueur est physiquement revenu sur la
+  // case de cette mission. Sinon il a choisi de se déplacer à un tour précédent et
+  // doit d'abord retourner sur la case pour pouvoir retenter (flux normal via landOn/
+  // checkMissionLand) — la mission en échec reste en attente tant qu'il n'y est pas.
+  if(me()?.failedMission&&isOnFailedMissionTile(me())){openRetryChoice();return;}
   rollMovementDice();
+}
+function isOnFailedMissionTile(p){
+  if(p.failedPos==null||!p.missionOrder)return false;
+  const mi=p.missionOrder[p.failedPos];if(mi==null)return false;
+  const m=MISSION_POOL[mi];if(!m)return false;
+  return nodes[p.nodeId]?.label===m.dest;
 }
 // Lancer de dés "normal" (déplacement). Extrait de rollDice() pour pouvoir être appelé
 // soit directement (pas de mission en échec), soit via le choix "lance les dés" quand
